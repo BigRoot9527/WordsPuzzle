@@ -9,7 +9,7 @@
 #import "WPSquareManager.h"
 
 @interface WPSquareManager()
-@property (nonatomic,strong) NSMutableArray* matrix;
+@property (nonatomic,strong) NSMutableArray<NSMutableArray* >* matrix;
 @property (nonatomic,strong) NSArray<NSString *>* defaultWords;
 @property NSInteger columns;
 @property NSInteger rows;

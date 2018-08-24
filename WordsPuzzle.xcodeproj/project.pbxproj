@@ -13,7 +13,7 @@
 		E6AE281A212FB87000921358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6AE2819212FB87000921358 /* Assets.xcassets */; };
 		E6AE281D212FB87000921358 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6AE281B212FB87000921358 /* LaunchScreen.storyboard */; };
 		E6AE2820212FB87000921358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE281F212FB87000921358 /* main.m */; };
-		E6AE282A212FB87000921358 /* WordsPuzzleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE2829212FB87000921358 /* WordsPuzzleTests.m */; };
+		E6AE282A212FB87000921358 /* WPSquareManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE2829212FB87000921358 /* WPSquareManagerTests.m */; };
 		E6AE283A212FFF1B00921358 /* WPSquareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE2839212FFF1B00921358 /* WPSquareManager.m */; };
 		E6AE283C2130046F00921358 /* WPSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE283B2130046F00921358 /* WPSquare.m */; };
 		E6AE284021300E8000921358 /* WPSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE283F21300E8000921358 /* WPSquareView.m */; };
@@ -41,7 +41,7 @@
 		E6AE281E212FB87000921358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6AE281F212FB87000921358 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E6AE2825212FB87000921358 /* WordsPuzzleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordsPuzzleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6AE2829212FB87000921358 /* WordsPuzzleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordsPuzzleTests.m; sourceTree = "<group>"; };
+		E6AE2829212FB87000921358 /* WPSquareManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPSquareManagerTests.m; sourceTree = "<group>"; };
 		E6AE282B212FB87000921358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6AE2835212FBC7D00921358 /* WPSquare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSquare.h; sourceTree = "<group>"; };
 		E6AE2838212FFF1B00921358 /* WPSquareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSquareManager.h; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		E6AE2828212FB87000921358 /* WordsPuzzleTests */ = {
 			isa = PBXGroup;
 			children = (
-				E6AE2829212FB87000921358 /* WordsPuzzleTests.m */,
+				E6AE2829212FB87000921358 /* WPSquareManagerTests.m */,
 				E6AE282B212FB87000921358 /* Info.plist */,
 			);
 			path = WordsPuzzleTests;
@@ -247,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6AE282A212FB87000921358 /* WordsPuzzleTests.m in Sources */,
+				E6AE282A212FB87000921358 /* WPSquareManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
