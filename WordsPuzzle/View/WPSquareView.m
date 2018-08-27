@@ -17,7 +17,6 @@
     
     NSInteger columns = [self.dataSource numberOfColunmsForView:self];
     NSInteger rows = [self.dataSource numberOfRowsForView:self];
-    
     for (NSInteger x = 0; x < columns; x++) {
         for (NSInteger y = 0; y < rows; y++) {
             CGRect inputRect = [self.dataSource rectOfSquareOnX:x AndY:y ForView:self];
@@ -34,7 +33,7 @@
     CGContextSetStrokeColorWithColor(context, [[UIColor blackColor] CGColor]);
     CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
     CGContextAddRect(context, rect);
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 1.0);
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 

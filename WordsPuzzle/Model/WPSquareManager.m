@@ -27,7 +27,7 @@
         self.columns = columns;
         self.rows = rows;
         self.matrixSize = size;
-        self.defaultWords = [[NSArray alloc] initWithObjects:@"臺",@"灣",@"人",@"需",@"要",@"消",@"波",@"塊", nil];
+        self.defaultWords = [[NSArray alloc] initWithObjects:@"臺",@"灣",@"人",@"需",@"要",@"消",@"波",@"塊",@"消",@"波",@"塊",@"需",@"要",@"臺",@"灣",@"人", nil];
         self.matrix = [[NSMutableArray alloc] init];
         [self _createMatrixInSize:self.matrixSize];
         [self _fillMatrixWithWords:self.defaultWords];
@@ -76,9 +76,11 @@
 - (WPSquare*)getSquareOfCertainPoint:(CGPoint)point
 {
     WPSquare *lastSquare = self.matrix[self.columns - 1][self.rows - 1];
+    
+    // + width(height)/2 to prevent xCount & yCount calculation result from dicreasing of 1 because of deviding with float.
     CGPoint fixedPoint = CGPointMake(
-                                 point.x < 0 ? 0 : point.x > lastSquare.rect.origin.x ? lastSquare.rect.origin.x : point.x,
-                                 point.y < 0 ? 0 : point.y > lastSquare.rect.origin.y ? lastSquare.rect.origin.y : point.y);
+                                 point.x < 0 ? 0 : point.x > lastSquare.rect.origin.x ? lastSquare.rect.origin.x + (lastSquare.rect.size.width / 2) : point.x,
+                                 point.y < 0 ? 0 : point.y > lastSquare.rect.origin.y ? lastSquare.rect.origin.y + (lastSquare.rect.size.height / 2) : point.y);
     
     NSInteger xCount = fixedPoint.x / lastSquare.rect.size.width;
     NSInteger yCount = fixedPoint.y / lastSquare.rect.size.height;
