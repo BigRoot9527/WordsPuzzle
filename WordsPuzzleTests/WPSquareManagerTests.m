@@ -16,11 +16,9 @@
 @interface WPSquareManager(Testing)
 @property (nonatomic,strong) NSMutableArray<NSMutableArray* > *matrix;
 @property (nonatomic,strong) NSArray<NSString *> *defaultWords;
-@property CGSize matrixSize;
 @property NSInteger columns;
 @property NSInteger rows;
-- (void)_createMatrixInSize:(CGSize)size;
-- (void)_fillMatrixWithWords:(NSArray*)words;
+- (NSArray*)_getAllMatrix;
 @end
 
 @implementation WPSquareManagerTests
@@ -28,15 +26,7 @@
 - (void)setUp
 {
     [super setUp];
-    self.manager = [[WPSquareManager alloc] init];
-    self.manager.columns = 5;
-    self.manager.rows = 8;
-    self.manager.matrixSize = CGSizeMake(500, 800);
-    self.manager.defaultWords = [[NSArray alloc] initWithObjects:@"臺",@"灣",@"人",@"需",@"要",@"消",@"波",@"塊", nil];
-    self.manager.matrix = [[NSMutableArray alloc] init];
-    [self.manager _createMatrixInSize:self.manager.matrixSize];
-    [self.manager _fillMatrixWithWords:self.manager.defaultWords];
-
+    self.manager = [[WPSquareManager alloc] initWithSize:CGSizeMake(500, 800) InColumns:5 AndRows:8];
 }
 
 - (void)tearDown
@@ -47,7 +37,6 @@
 
 - (void)testManagerInitWithSize
 {
-    self.manager = [[WPSquareManager alloc] initWithSize:CGSizeMake(500, 800)];
     XCTAssertNotNil(self.manager.defaultWords);
     XCTAssertEqual(self.manager.matrix.count, self.manager.columns);
     XCTAssertEqual(self.manager.matrix[0].count, self.manager.rows);
@@ -83,31 +72,31 @@
     XCTAssertEqual(leftUp.rect.origin.y, 0);
     XCTAssertEqual(leftUp.rect.size.width, 100);
     XCTAssertEqual(leftUp.rect.size.height, 100);
-    XCTAssertEqual(leftUp.word.description, @"臺");
+    XCTAssertTrue([leftUp.word isEqualToString:@"臺"]);
     WPSquare *rightUp = [self.manager getSquareOfCertainPoint: CGPointMake(500, 0)];
     XCTAssertEqual(rightUp.rect.origin.x, 400);
     XCTAssertEqual(rightUp.rect.origin.y, 0);
     XCTAssertEqual(rightUp.rect.size.width, 100);
     XCTAssertEqual(rightUp.rect.size.height, 100);
-    XCTAssertEqual(rightUp.word.description, @"要");
+    XCTAssertTrue([rightUp.word isEqualToString:@"要"]);
     WPSquare *leftDown = [self.manager getSquareOfCertainPoint: CGPointMake(0, 800)];
     XCTAssertEqual(leftDown.rect.origin.x, 0);
     XCTAssertEqual(leftDown.rect.origin.y, 700);
     XCTAssertEqual(leftDown.rect.size.width, 100);
     XCTAssertEqual(leftDown.rect.size.height, 100);
-    XCTAssertEqual(leftDown.word.description, @"需");
+    XCTAssertTrue([leftDown.word isEqualToString:@"需"]);
     WPSquare *rightDown = [self.manager getSquareOfCertainPoint: CGPointMake(500, 800)];
     XCTAssertEqual(rightDown.rect.origin.x, 400);
     XCTAssertEqual(rightDown.rect.origin.y, 700);
     XCTAssertEqual(rightDown.rect.size.width, 100);
     XCTAssertEqual(rightDown.rect.size.height, 100);
-    XCTAssertEqual(rightDown.word.description, @"塊");
+    XCTAssertTrue([rightDown.word isEqualToString:@"塊"]);
     WPSquare *middle = [self.manager getSquareOfCertainPoint: CGPointMake(250, 400)];
     XCTAssertEqual(middle.rect.origin.x, 200);
     XCTAssertEqual(middle.rect.origin.y, 400);
     XCTAssertEqual(middle.rect.size.width, 100);
     XCTAssertEqual(middle.rect.size.height, 100);
-    XCTAssertEqual(middle.word.description, @"波");
+    XCTAssertTrue([middle.word isEqualToString:@"波"]);
 }
 
 - (void)testManagerSetNewWord

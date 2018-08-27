@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class WPSquareView;
-@protocol WPSquareViewDelegate
 
+@protocol WPSquareViewDataSource
+- (NSInteger)numberOfColunmsForView:(UIView*)view;
+- (NSInteger)numberOfRowsForView:(UIView*)view;
+- (CGRect)rectOfSquareOnX:(NSInteger)x AndY:(NSInteger)y ForView:(UIView*)view;
+- (NSString *)wordOfSquareOnX:(NSInteger)x AndY:(NSInteger)y ForView:(UIView*)view;
 @end
 
 @interface WPSquareView : UIView
+@property (nonatomic,weak) id<WPSquareViewDataSource> dataSource;
 
 @end

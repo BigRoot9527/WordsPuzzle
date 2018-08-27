@@ -20,12 +20,12 @@
 @implementation WPSquareManager
 
 
-- (instancetype)initWithSize:(CGSize)size
+- (instancetype)initWithSize:(CGSize)size InColumns:(NSInteger)columns AndRows:(NSInteger)rows
 {
     self = [super init];
     if (self) {
-        self.columns = 8;
-        self.rows = 8;
+        self.columns = columns;
+        self.rows = rows;
         self.matrixSize = size;
         self.defaultWords = [[NSArray alloc] initWithObjects:@"臺",@"灣",@"人",@"需",@"要",@"消",@"波",@"塊", nil];
         self.matrix = [[NSMutableArray alloc] init];
@@ -63,9 +63,14 @@
     }
 }
 
-- (NSArray*)getAllMatrix
+- (NSArray*)_getAllMatrix
 {
     return [self.matrix copy];
+}
+
+- (WPSquare*)getSquareOfColumn:(NSInteger)x AndRow:(NSInteger)y
+{
+    return self.matrix[x][y];
 }
 
 - (WPSquare*)getSquareOfCertainPoint:(CGPoint)point
@@ -77,7 +82,7 @@
     
     NSInteger xCount = fixedPoint.x / lastSquare.rect.size.width;
     NSInteger yCount = fixedPoint.y / lastSquare.rect.size.height;
-    return self.matrix[xCount][yCount];
+    return [self getSquareOfColumn:xCount AndRow:yCount];
 }
 
 - (void)setNewWord:(NSString*)word OnPoint:(CGPoint)point

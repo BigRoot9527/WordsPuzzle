@@ -17,6 +17,7 @@
 		E6AE283A212FFF1B00921358 /* WPSquareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE2839212FFF1B00921358 /* WPSquareManager.m */; };
 		E6AE283C2130046F00921358 /* WPSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE283B2130046F00921358 /* WPSquare.m */; };
 		E6AE284021300E8000921358 /* WPSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE283F21300E8000921358 /* WPSquareView.m */; };
+		E6AE28432133DC4B00921358 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E6AE28422133DC4B00921358 /* UIView+AutoLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		E6AE283B2130046F00921358 /* WPSquare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPSquare.m; sourceTree = "<group>"; };
 		E6AE283E21300E8000921358 /* WPSquareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPSquareView.h; sourceTree = "<group>"; };
 		E6AE283F21300E8000921358 /* WPSquareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPSquareView.m; sourceTree = "<group>"; };
+		E6AE28412133DC4B00921358 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		E6AE28422133DC4B00921358 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 			children = (
 				E6AE283E21300E8000921358 /* WPSquareView.h */,
 				E6AE283F21300E8000921358 /* WPSquareView.m */,
+				E6AE28412133DC4B00921358 /* UIView+AutoLayout.h */,
+				E6AE28422133DC4B00921358 /* UIView+AutoLayout.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				E6AE284021300E8000921358 /* WPSquareView.m in Sources */,
 				E6AE283C2130046F00921358 /* WPSquare.m in Sources */,
 				E6AE2820212FB87000921358 /* main.m in Sources */,
+				E6AE28432133DC4B00921358 /* UIView+AutoLayout.m in Sources */,
 				E6AE2812212FB86F00921358 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

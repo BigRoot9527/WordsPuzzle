@@ -10,8 +10,8 @@
 #import "WPSquare.h"
 
 @interface WPSquareManager : NSObject
-- (instancetype)initWithSize:(CGSize)size;
-- (NSArray*)getAllMatrix;
+- (instancetype)initWithSize:(CGSize)size InColumns:(NSInteger)columns AndRows:(NSInteger)rows;
+- (WPSquare*)getSquareOfColumn:(NSInteger)x AndRow:(NSInteger)y;
 - (WPSquare*)getSquareOfCertainPoint:(CGPoint)point;
 - (void)setNewWord:(NSString*)word OnPoint:(CGPoint)point;
 @end
