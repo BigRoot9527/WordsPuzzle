@@ -14,5 +14,4 @@
 @property (nonatomic) CGRect rect;
 @property (nonatomic) NSString *word;
 
-- (instancetype)initWithCGRect:(CGRect)rect AndWord:(NSString*)word;
 @end

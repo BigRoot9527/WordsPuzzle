@@ -11,6 +11,7 @@
 @interface WPSquareManager()
 @property (nonatomic,strong) NSMutableArray<NSMutableArray* >* matrix;
 @property (nonatomic,strong) NSArray<NSString *>* defaultWords;
+@property CGSize matrixSize;
 @property NSInteger columns;
 @property NSInteger rows;
 
@@ -25,26 +26,40 @@
     if (self) {
         self.columns = 8;
         self.rows = 8;
+        self.matrixSize = size;
         self.defaultWords = [[NSArray alloc] initWithObjects:@"臺",@"灣",@"人",@"需",@"要",@"消",@"波",@"塊", nil];
         self.matrix = [[NSMutableArray alloc] init];
-        [self _createMatrixOfWordsInSize:size];
+        [self _createMatrixInSize:self.matrixSize];
+        [self _fillMatrixWithWords:self.defaultWords];
     }
     return self;
 }
 
-- (void)_createMatrixOfWordsInSize:(CGSize)size
+- (void)_createMatrixInSize:(CGSize)size;
 {
     CGFloat squareWidth = size.width / self.columns;
     CGFloat squareHeight = size.height / self.rows;
-    NSInteger k = 0;
     for (NSInteger x = 0; x < self.columns; x ++) {
         NSMutableArray *newColumn = [[NSMutableArray alloc] init];
         for (NSInteger y = 0; y < self.rows; y ++) {
             CGRect rect = CGRectMake(squareWidth * x, squareHeight * y , squareWidth, squareHeight);
-            [newColumn addObject:[[WPSquare alloc] initWithCGRect:rect AndWord:self.defaultWords[0]]];
-            k = k == self.defaultWords.count - 1 ? 0 : k + 1;
+            WPSquare *square = [[WPSquare alloc] init];
+            square.rect = rect;
+            [newColumn addObject: square];
         }
         [self.matrix addObject:newColumn];
+    }
+}
+
+- (void)_fillMatrixWithWords:(NSArray*)words
+{
+    NSInteger k = 0;
+    for (NSInteger y = 0; y < self.rows; y++) {
+        for (NSInteger x = 0; x < self.columns; x++) {
+            WPSquare *square = self.matrix[x][y];
+            square.word = self.defaultWords[k];
+            k = k < self.defaultWords.count - 1 ? k + 1 : 0;
+        }
     }
 }
 
@@ -55,21 +70,20 @@
 
 - (WPSquare*)getSquareOfCertainPoint:(CGPoint)point
 {
-    WPSquare *firstPoint = self.matrix[0][0];
-    NSInteger xCount = firstPoint.rect.size.width;
-    NSInteger yCount = firstPoint.rect.size.height;
+    WPSquare *lastSquare = self.matrix[self.columns - 1][self.rows - 1];
+    CGPoint fixedPoint = CGPointMake(
+                                 point.x < 0 ? 0 : point.x > lastSquare.rect.origin.x ? lastSquare.rect.origin.x : point.x,
+                                 point.y < 0 ? 0 : point.y > lastSquare.rect.origin.y ? lastSquare.rect.origin.y : point.y);
+    
+    NSInteger xCount = fixedPoint.x / lastSquare.rect.size.width;
+    NSInteger yCount = fixedPoint.y / lastSquare.rect.size.height;
     return self.matrix[xCount][yCount];
 }
 
-- (void)setNewWord:(NSString*)word OnSqareRect:(CGRect)rect
+- (void)setNewWord:(NSString*)word OnPoint:(CGPoint)point
 {
-    for(NSMutableArray *oneColumn in self.matrix) {
-        for(WPSquare *square in oneColumn) {
-            if (square.rect.origin.x == rect.origin.x && square.rect.origin.y == rect.origin.y) {
-                square.word = word;
-            }
-        }
-    }
+    WPSquare *square = [self getSquareOfCertainPoint:point];
+    square.word = word;
 }
 
 @end

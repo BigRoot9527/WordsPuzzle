@@ -11,15 +11,5 @@
 
 @implementation WPSquare
 
-- (instancetype)initWithCGRect:(CGRect)rect AndWord:(NSString*)word
-{
-    self = [super init];
-    if (self) {
-        self.rect = rect;
-        self.word = word;
-    }
-    return self;
-}
-
 @end
 

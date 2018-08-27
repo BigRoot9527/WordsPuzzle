@@ -13,5 +13,5 @@
 - (instancetype)initWithSize:(CGSize)size;
 - (NSArray*)getAllMatrix;
 - (WPSquare*)getSquareOfCertainPoint:(CGPoint)point;
-- (void)setNewWord:(NSString*)word OnSqareRect:(CGRect)rect;
+- (void)setNewWord:(NSString*)word OnPoint:(CGPoint)point;
 @end
